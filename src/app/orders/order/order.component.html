@@ -1,0 +1,26 @@
+<table class="table table-borderless" id="users">
+  <thead class="thead-light">
+  <th>Id</th>
+  <th>Active</th>
+  <th>Name</th>
+  <th>Date Of Birth</th>
+  <th>
+    Edit
+  </th>
+  </thead>
+  <tbody>
+
+  <tr  [ngClass]="getClass(item.active)" *ngFor="let item of service.orderItems;let i=index;">
+    <td>{{item.id}}</td>
+    <ng-container [ngSwitch]="item?.active">
+      <td *ngSwitchCase="true">True</td>
+      <td *ngSwitchCase="false">False</td>
+    </ng-container>
+    <td>{{item.name}}</td>
+    <td>{{item.dateOfBirth}}</td>
+    <td>
+      <a class="btn btn-sm btn-info text-white" (click)="AddOrEditOrderItem(i,item.id)"><i class="fa fa-pencil"></i></a>
+      </td>
+  </tr>
+  </tbody>
+</table>
